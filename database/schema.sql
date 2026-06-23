@@ -1,8 +1,6 @@
--- Create database
 CREATE DATABASE IF NOT EXISTS purchase_system;
 USE purchase_system;
 
--- Products table
 CREATE TABLE IF NOT EXISTS products (
     id CHAR(36) PRIMARY KEY DEFAULT (UUID()),
     name VARCHAR(100) NOT NULL,
@@ -13,7 +11,6 @@ CREATE TABLE IF NOT EXISTS products (
     INDEX idx_category (category)
 );
 
--- Stock table
 CREATE TABLE IF NOT EXISTS stock (
     id CHAR(36) PRIMARY KEY DEFAULT (UUID()),
     product_id CHAR(36) NOT NULL,
@@ -23,7 +20,6 @@ CREATE TABLE IF NOT EXISTS stock (
     UNIQUE KEY unique_product (product_id)
 );
 
--- Purchases table
 CREATE TABLE IF NOT EXISTS purchases (
     id CHAR(36) PRIMARY KEY DEFAULT (UUID()),
     product_id CHAR(36) NOT NULL,
@@ -38,6 +34,5 @@ CREATE TABLE IF NOT EXISTS purchases (
     INDEX idx_date (purchase_date)
 );
 
--- HAPUS semua trigger yang ada
 DROP TRIGGER IF EXISTS update_stock_on_insert;
 DROP TRIGGER IF EXISTS update_stock_on_update;
