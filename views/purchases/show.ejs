@@ -1,0 +1,59 @@
+<%
+  const currentPage = 'purchases';
+%>
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <%- include('../partials/navbar', { currentPage }) %>
+  
+  <div class="container">
+    <div class="page-header">
+      <h2><i class="fas fa-receipt"></i> Purchase Details</h2>
+      <a href="/purchases" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Back to Purchases
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <div class="purchase-details">
+          <div class="detail-row" style="padding: 10px 0; border-bottom: 1px solid #eee;">
+            <strong>ID:</strong> <%= purchase.id %>
+          </div>
+          <div class="detail-row" style="padding: 10px 0; border-bottom: 1px solid #eee;">
+            <strong>Product:</strong> <%= purchase.product_name %>
+          </div>
+          <div class="detail-row" style="padding: 10px 0; border-bottom: 1px solid #eee;">
+            <strong>Quantity:</strong> <%= purchase.quantity %>
+          </div>
+          <div class="detail-row" style="padding: 10px 0; border-bottom: 1px solid #eee;">
+            <strong>Total Price:</strong> Rp <%= purchase.total_price.toLocaleString() %>
+          </div>
+          <div class="detail-row" style="padding: 10px 0; border-bottom: 1px solid #eee;">
+            <strong>Admin:</strong> <%= purchase.admin_name || '-' %>
+          </div>
+          <div class="detail-row" style="padding: 10px 0; border-bottom: 1px solid #eee;">
+            <strong>Status:</strong> 
+            <span class="status status-<%= purchase.status %>">
+              <%= purchase.status %>
+            </span>
+          </div>
+          <div class="detail-row" style="padding: 10px 0; border-bottom: 1px solid #eee;">
+            <strong>Date:</strong> <%= new Date(purchase.purchase_date).toLocaleString('id-ID') %>
+          </div>
+          <% if (purchase.notes) { %>
+            <div class="detail-row" style="padding: 10px 0;">
+              <strong>Notes:</strong> <%= purchase.notes %>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

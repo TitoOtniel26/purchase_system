@@ -1,0 +1,36 @@
+{
+  "name": "purchase-management-system",
+  "version": "2.0.0",
+  "description": "Professional Purchase Management System with MVC Architecture",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "purchase",
+    "inventory",
+    "management",
+    "express",
+    "mysql",
+    "mvc"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ejs": "^3.1.9",
+    "mysql2": "^3.6.0",
+    "dotenv": "^16.3.1",
+    "body-parser": "^1.20.2",
+    "method-override": "^3.0.0",
+    "express-validator": "^7.0.1",
+    "winston": "^3.11.0",
+    "helmet": "^7.0.0",
+    "cors": "^2.8.5",
+    "compression": "^1.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

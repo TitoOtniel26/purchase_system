@@ -1,0 +1,58 @@
+<%
+  const currentPage = 'products';
+%>
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <%- include('../partials/navbar', { currentPage }) %>
+  
+  <div class="container">
+    <div class="page-header">
+      <h2><i class="fas fa-box"></i> <%= product.name %></h2>
+      <div>
+        <a href="/products/<%= product.id %>/edit" class="btn btn-secondary">
+          <i class="fas fa-edit"></i> Edit
+        </a>
+        <a href="/products" class="btn btn-secondary">
+          <i class="fas fa-arrow-left"></i> Back
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <div class="product-details">
+          <div class="detail-row" style="padding: 10px 0; border-bottom: 1px solid #eee;">
+            <strong>ID:</strong> <%= product.id %>
+          </div>
+          <div class="detail-row" style="padding: 10px 0; border-bottom: 1px solid #eee;">
+            <strong>Name:</strong> <%= product.name %>
+          </div>
+          <div class="detail-row" style="padding: 10px 0; border-bottom: 1px solid #eee;">
+            <strong>Category:</strong> <%= product.category || 'Uncategorized' %>
+          </div>
+          <div class="detail-row" style="padding: 10px 0; border-bottom: 1px solid #eee;">
+            <strong>Price:</strong> Rp <%= product.price.toLocaleString() %>
+          </div>
+          <div class="detail-row" style="padding: 10px 0; border-bottom: 1px solid #eee;">
+            <strong>Stock:</strong> <%= product.stock || 0 %>
+          </div>
+          <div class="detail-row" style="padding: 10px 0;">
+            <strong>Status:</strong>
+            <% if ((product.stock || 0) > 0) { %>
+              <span class="status status-completed">In Stock</span>
+            <% } else { %>
+              <span class="status status-cancelled">Out of Stock</span>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>
